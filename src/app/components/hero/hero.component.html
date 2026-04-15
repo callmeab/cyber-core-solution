@@ -1,0 +1,61 @@
+<section class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-bg-primary">
+  <!-- Particle Canvas Background -->
+  <canvas #particleCanvas class="absolute inset-0 z-0"></canvas>
+
+  <!-- Hero Content -->
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-6 text-center">
+    
+    <!-- Overline -->
+    <p class="animate-fade-up text-cyan-brand text-sm tracking-[0.4em] uppercase font-sora font-semibold mb-6" 
+       style="animation-delay: 0.2s">
+      Backed by CyCsol Group of Industries
+    </p>
+
+    <!-- Headline -->
+    <h1 class="animate-fade-up text-5xl md:text-7xl lg:text-[68px] font-sora font-bold leading-tight text-white mb-8"
+        style="animation-delay: 0.4s">
+      We Engineer the <br/>
+      <span class="shimmer-text">Digital Future</span>
+    </h1>
+
+    <!-- Typewriter -->
+    <div class="animate-fade-up h-12 mb-10 flex items-center justify-center"
+         style="animation-delay: 0.6s">
+      <span class="text-xl md:text-2xl text-cyan-brand font-mono border-r-2 border-cyan-brand pr-2">
+        {{ typewriterText() }}
+      </span>
+    </div>
+
+    <!-- Descriptor -->
+    <p class="animate-fade-up text-text-muted text-lg md:text-xl max-w-2xl mx-auto mb-12 font-inter"
+       style="animation-delay: 0.8s">
+      End-to-end digital solutions for businesses ready to lead.
+    </p>
+
+    <!-- Buttons -->
+    <div class="animate-fade-up flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
+         style="animation-delay: 1.0s">
+      <button class="w-full sm:w-auto px-10 py-5 bg-cyan-brand text-bg-primary font-sora font-bold rounded-xl shadow-glow-cyan hover:scale-[1.02] transition-all duration-300">
+        Start a Project
+      </button>
+      <button class="w-full sm:w-auto px-10 py-5 border border-cyan-brand text-cyan-brand font-sora font-bold rounded-xl hover:bg-cyan-brand/5 transition-all duration-300">
+        See Our Work
+      </button>
+    </div>
+
+    <!-- Trust Pills -->
+    <div class="animate-fade-up flex flex-wrap justify-center gap-4"
+         style="animation-delay: 1.2s">
+      <div class="border border-border-default bg-white/5 rounded-full px-5 py-2 text-sm text-text-muted font-inter backdrop-blur-sm">
+        40+ Projects Delivered
+      </div>
+      <div class="border border-border-default bg-white/5 rounded-full px-5 py-2 text-sm text-text-muted font-inter backdrop-blur-sm">
+        AI & Cloud Ready
+      </div>
+      <div class="border border-border-default bg-white/5 rounded-full px-5 py-2 text-sm text-text-muted font-inter backdrop-blur-sm">
+        CyCsol Affiliated
+      </div>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,98 @@
+<section id="portfolio" class="bg-bg-primary py-24 px-6 overflow-hidden">
+  <div class="max-w-7xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-16 animate-on-scroll">
+      <h2 class="text-4xl md:text-5xl font-sora font-bold text-white mb-6">Our Work</h2>
+      <p class="text-text-muted text-lg max-w-2xl mx-auto font-inter">Real projects. Real results.</p>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="flex flex-wrap justify-center gap-4 mb-20 animate-on-scroll" style="transition-delay: 0.1s">
+      <button 
+        *ngFor="let cat of categories"
+        (click)="setCategory(cat)"
+        class="px-6 py-2.5 rounded-full font-sora font-semibold transition-all duration-300 border text-sm"
+        [ngClass]="activeCategory() === cat 
+          ? 'bg-cyan-brand text-bg-primary border-cyan-brand shadow-glow-cyan' 
+          : 'bg-transparent text-text-muted border-border-default hover:border-cyan-brand hover:text-cyan-brand'"
+      >
+        {{ cat }}
+      </button>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <div 
+        *ngFor="let project of filteredProjects(); let i = index"
+        class="group card-glow bg-bg-secondary rounded-[2.5rem] overflow-hidden flex flex-col animate-on-scroll"
+        [style.transition-delay]="(0.1 + (i * 0.1)) + 's'"
+        (mouseenter)="toggleHover(project, true)"
+        (mouseleave)="toggleHover(project, false)"
+      >
+        <!-- Thumbnail Area -->
+        <div class="h-64 bg-bg-primary/50 overflow-hidden relative border-b border-white/5">
+          <div class="absolute inset-0 bg-gradient-brand opacity-10 group-hover:opacity-20 transition-opacity"></div>
+          
+          <!-- Hover Overlay -->
+          <div 
+            class="absolute inset-0 bg-bg-primary/60 backdrop-blur-sm flex items-center justify-center transition-all duration-500 z-20"
+            [ngClass]="project.isHovered ? 'opacity-100' : 'opacity-0 pointer-events-none translate-y-4'"
+          >
+            <button [routerLink]="['/portfolio', project.id]" class="px-8 py-3 bg-white text-bg-primary font-sora font-bold rounded-xl hover:scale-105 transition-transform shadow-2xl">
+              View Case Study
+            </button>
+          </div>
+          
+          <!-- Branding Overlay/Image Placeholder -->
+          <div class="absolute inset-0 flex items-center justify-center pointer-events-none px-6 text-center">
+             <span class="text-white/10 font-sora text-5xl font-black uppercase tracking-tighter">{{ project.title }}</span>
+          </div>
+
+          <!-- Role & Date Tag (top right) -->
+          <div class="absolute top-6 right-6 z-10 flex flex-col items-end gap-2">
+            <span class="px-3 py-1 bg-bg-primary/80 backdrop-blur-md rounded-lg text-[10px] text-cyan-brand font-bold uppercase tracking-widest border border-cyan-brand/20">
+              {{ project.date }}
+            </span>
+          </div>
+        </div>
+
+        <!-- content Below -->
+        <div class="p-10 flex flex-col flex-grow">
+          <div class="mb-4 flex flex-wrap gap-2">
+             <span class="px-3 py-1 bg-cyan-brand/5 border border-cyan-brand/10 text-cyan-brand/70 rounded-full text-[9px] font-bold uppercase tracking-widest">
+               {{ project.category }}
+             </span>
+             <span class="px-3 py-1 bg-violet-brand/5 border border-violet-brand/10 text-violet-brand/70 rounded-full text-[9px] font-bold uppercase tracking-widest">
+               {{ project.role }}
+             </span>
+          </div>
+
+          <h3 class="text-2xl font-sora font-bold text-white mb-4">{{ project.title }}</h3>
+          <p class="text-text-muted font-inter text-sm leading-relaxed mb-8 line-clamp-3">{{ project.description }}</p>
+
+          <!-- Tags -->
+          <div class="flex flex-wrap gap-1.5 mb-8">
+            <span *ngFor="let tag of project.tags" class="text-[10px] text-text-muted bg-white/5 px-2 py-0.5 rounded-md border border-white/5">
+              #{{ tag }}
+            </span>
+          </div>
+
+          <div class="mt-auto">
+             <a class="text-cyan-brand font-sora font-semibold inline-flex items-center gap-2 group/link cursor-pointer text-sm">
+               View Project 
+               <span class="transition-transform group-hover/link:translate-x-1">→</span>
+             </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom CTA -->
+    <div class="text-center mt-20 animate-on-scroll" style="transition-delay: 0.4s">
+       <button class="px-10 py-5 border border-cyan-brand text-cyan-brand font-sora font-bold rounded-2xl hover:bg-cyan-brand hover:text-bg-primary transition-all duration-300">
+         Collaborate with Cyber Core
+       </button>
+    </div>
+
+  </div>
+</section>

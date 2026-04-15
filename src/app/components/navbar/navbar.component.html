@@ -1,0 +1,70 @@
+<nav 
+  class="fixed top-0 w-full z-50 transition-all duration-300 px-6 py-4"
+  [ngClass]="isScrolled() ? 'bg-bg-primary/80 backdrop-blur-lg border-b border-border-default' : 'bg-transparent'"
+>
+  <div class="max-w-7xl mx-auto flex justify-between items-center">
+    <!-- Left: Brand -->
+    <div 
+      class="flex items-center gap-2 cursor-pointer group"
+      (click)="scrollTo('hero')"
+    >
+    
+     <img class="w-40" src="/logo-cc.svg" alt="">
+    </div>
+
+    <!-- Right: Desktop Links -->
+    <div class="hidden md:flex items-center gap-8">
+      <ng-container *ngFor="let link of navLinks">
+        <a 
+          (click)="scrollTo(link.id)"
+          class="nav-link relative font-inter text-sm text-text-muted hover:text-cyan-brand transition-colors cursor-pointer py-1"
+        >
+          {{ link.label }}
+        </a>
+      </ng-container>
+      
+      <button 
+        (click)="scrollTo('contact')"
+        class="font-sora font-semibold text-sm border border-cyan-brand text-cyan-brand px-5 py-2 rounded-lg hover:bg-cyan-brand hover:text-bg-primary transition-all duration-200"
+      >
+        Get a Quote
+      </button>
+    </div>
+
+    <!-- Mobile Hamburger -->
+    <button 
+      (click)="toggleMenu()"
+      class="md:hidden text-text-primary p-2 focus:outline-none"
+    >
+      <svg *ngIf="!isMenuOpen()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+        <line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>
+      </svg>
+      <svg *ngIf="isMenuOpen()" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+        <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Drawer -->
+  <div 
+    class="md:hidden overflow-hidden transition-all duration-300 ease-in-out"
+    [ngClass]="isMenuOpen() ? 'max-h-[400px] opacity-100 mt-4' : 'max-h-0 opacity-0'"
+  >
+    <div class="flex flex-col gap-4 py-6 px-2 bg-bg-secondary/50 rounded-2xl backdrop-blur-xl border border-white/5">
+      <ng-container *ngFor="let link of navLinks">
+        <a 
+          (click)="scrollTo(link.id)"
+          class="text-text-muted hover:text-cyan-brand font-inter text-lg py-2 px-4 transition-colors"
+        >
+          {{ link.label }}
+        </a>
+      </ng-container>
+      <button 
+        (click)="scrollTo('contact')"
+        class="mt-4 mx-4 border border-cyan-brand text-cyan-brand py-3 rounded-xl font-sora font-bold hover:bg-cyan-brand hover:text-bg-primary transition-all"
+      >
+        Get a Quote
+      </button>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,4 @@
+/* Services specific styles */
+:host {
+  display: block;
+}

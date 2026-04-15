@@ -1,0 +1,202 @@
+<section id="contact" class="bg-bg-primary py-24 px-6 overflow-hidden">
+  <div class="max-w-7xl mx-auto">
+    <!-- Header -->
+    <div class="text-center mb-20 animate-on-scroll">
+      <h2 class="text-4xl md:text-5xl font-sora font-bold text-white mb-6">
+        Let's Build <span class="gradient-text">Something Great</span>
+      </h2>
+      <p class="text-text-muted text-lg max-w-2xl mx-auto font-inter">
+        Drop us a message and we'll respond within 24 hours.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+      <!-- Left Column: Form -->
+      <div class="bg-bg-secondary/40 backdrop-blur-sm border border-white/5 rounded-[2.5rem] p-8 md:p-12 animate-on-scroll">
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" *ngIf="!showSuccess()">
+          <div class="space-y-6">
+            <!-- Full Name -->
+            <div>
+              <label class="block text-text-muted text-sm mb-2 px-1">Full Name</label>
+              <input 
+                type="text" 
+                formControlName="fullName"
+                placeholder="John Doe"
+                class="w-full bg-bg-secondary border rounded-xl px-5 py-4 text-text-primary focus:outline-none transition-all"
+                [ngClass]="(contactForm.get('fullName')?.invalid && (contactForm.get('fullName')?.touched || isSubmitted())) ? 'border-red-500/50' : 'border-border-default focus:border-cyan-brand'"
+              >
+              <p *ngIf="contactForm.get('fullName')?.invalid && (contactForm.get('fullName')?.touched || isSubmitted())" class="text-red-400 text-xs mt-1 px-1">
+                Please enter your full name.
+              </p>
+            </div>
+
+            <!-- Email -->
+            <div>
+              <label class="block text-text-muted text-sm mb-2 px-1">Email Address</label>
+              <input 
+                type="email" 
+                formControlName="email"
+                placeholder="john@example.com"
+                class="w-full bg-bg-secondary border rounded-xl px-5 py-4 text-text-primary focus:outline-none transition-all"
+                [ngClass]="(contactForm.get('email')?.invalid && (contactForm.get('email')?.touched || isSubmitted())) ? 'border-red-500/50' : 'border-border-default focus:border-cyan-brand'"
+              >
+              <p *ngIf="contactForm.get('email')?.invalid && (contactForm.get('email')?.touched || isSubmitted())" class="text-red-400 text-xs mt-1 px-1">
+                Please enter a valid email.
+              </p>
+            </div>
+
+            <!-- Service Selection -->
+            <div>
+              <label class="block text-text-muted text-sm mb-2 px-1">What can we help with?</label>
+              <select 
+                formControlName="service"
+                class="w-full bg-bg-secondary border rounded-xl px-5 py-4 text-text-primary focus:outline-none transition-all appearance-none cursor-pointer"
+                [ngClass]="(contactForm.get('service')?.invalid && (contactForm.get('service')?.touched || isSubmitted())) ? 'border-red-500/50' : 'border-border-default focus:border-cyan-brand'"
+              >
+                <option value="" disabled selected>Select a service</option>
+                <option *ngFor="let s of services" [value]="s">{{ s }}</option>
+              </select>
+            </div>
+
+            <!-- Project Brief -->
+            <div>
+              <label class="block text-text-muted text-sm mb-2 px-1">Project Brief</label>
+              <textarea 
+                formControlName="projectBrief"
+                rows="4"
+                placeholder="Tell us about your project..."
+                class="w-full bg-bg-secondary border rounded-xl px-5 py-4 text-text-primary focus:outline-none transition-all resize-none"
+                [ngClass]="(contactForm.get('projectBrief')?.invalid && (contactForm.get('projectBrief')?.touched || isSubmitted())) ? 'border-red-500/50' : 'border-border-default focus:border-cyan-brand'"
+              ></textarea>
+              <p *ngIf="contactForm.get('projectBrief')?.invalid && (contactForm.get('projectBrief')?.touched || isSubmitted())" class="text-red-400 text-xs mt-1 px-1">
+                Brief must be at least 10 characters.
+              </p>
+            </div>
+
+            <!-- Submit -->
+            <button 
+              type="submit"
+              class="w-full bg-cyan-brand text-bg-primary font-sora font-bold py-5 rounded-xl shadow-glow-cyan hover:scale-[1.01] active:scale-95 transition-all duration-200"
+            >
+              Send Message
+            </button>
+          </div>
+        </form>
+
+        <!-- Success State -->
+        <div *ngIf="showSuccess()" class="py-20 text-center animate-fade-in">
+          <div class="w-20 h-20 bg-mint-brand/20 text-mint-brand rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h4 class="text-2xl font-sora font-bold text-white mb-2">Message Sent!</h4>
+          <p class="text-text-muted">We'll get back to you within 24 hours.</p>
+        </div>
+      </div>
+
+      <!-- Right Column: Details -->
+      <div class="space-y-12">
+        <div class="space-y-8">
+           <!-- Email -->
+           <div class="flex gap-6 animate-on-scroll" style="transition-delay: 0.1s">
+              <div class="w-12 h-12 bg-cyan-brand/10 text-cyan-brand rounded-xl flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              </div>
+              <div>
+                 <p class="text-text-muted text-xs uppercase tracking-widest font-bold mb-1">Email Us</p>
+                 <a href="mailto:hello@cybercoresol.com" class="text-xl text-text-primary hover:text-cyan-brand transition-colors font-sora font-medium">hello@cybercoresol.com</a>
+              </div>
+           </div>
+
+           <!-- Whatsapp -->
+           <div class="flex gap-6 animate-on-scroll" style="transition-delay: 0.2s">
+              <div class="w-12 h-12 bg-mint-brand/10 text-mint-brand rounded-xl flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </div>
+              <div>
+                 <p class="text-text-muted text-xs uppercase tracking-widest font-bold mb-1">WhatsApp</p>
+                 <p class="text-xl text-text-primary font-sora font-medium">+92 3XX XXX XXXX</p>
+              </div>
+           </div>
+
+           <!-- Location -->
+           <div class="flex gap-6 animate-on-scroll" style="transition-delay: 0.3s">
+              <div class="w-12 h-12 bg-violet-brand/10 text-violet-brand rounded-xl flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div>
+                 <p class="text-text-muted text-xs uppercase tracking-widest font-bold mb-1">Location</p>
+                 <p class="text-xl text-text-primary font-sora font-medium">Karachi, Pakistan</p>
+              </div>
+           </div>
+
+           <!-- Hours -->
+           <div class="flex gap-6 animate-on-scroll" style="transition-delay: 0.4s">
+              <div class="w-12 h-12 bg-amber-brand/10 text-amber-brand rounded-xl flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <div>
+                 <p class="text-text-muted text-xs uppercase tracking-widest font-bold mb-1">Working Hours</p>
+                 <p class="text-xl text-text-primary font-sora font-medium">Mon–Fri, 9AM–6PM PKT</p>
+              </div>
+           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-bg-footer py-16 px-6 border-t border-white/5">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
+      <!-- Footer Left: Brand -->
+      <div class="md:col-span-5">
+        <div class="flex items-center gap-3 mb-6">
+        <img src="/logo-full.svg" alt="" class="w-40">
+        </div>
+        <p class="text-text-muted text-base max-w-sm mb-8 leading-relaxed font-inter">
+          Engineering Digital Excellence. A premium software house specializing in enterprise-grade web, mobile, and AI transformation.
+        </p>
+        <div class="flex gap-5">
+           <a href="#" class="text-text-muted hover:text-cyan-brand transition-all"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/></svg></a>
+           <a href="#" class="text-text-muted hover:text-cyan-brand transition-all"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></a>
+           <a href="#" class="text-text-muted hover:text-cyan-brand transition-all"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg></a>
+        </div>
+      </div>
+
+      <!-- Footer Center: Links -->
+      <div class="md:col-span-3 md:ml-auto">
+        <h4 class="text-white font-sora font-bold mb-6">Quick Links</h4>
+        <ul class="space-y-4 font-inter">
+          <li><a (click)="scrollTo('services')" class="text-text-muted hover:text-cyan-brand cursor-pointer transition-colors">Services</a></li>
+          <li><a (click)="scrollTo('portfolio')" class="text-text-muted hover:text-cyan-brand cursor-pointer transition-colors">Portfolio</a></li>
+          <li><a (click)="scrollTo('why-us')" class="text-text-muted hover:text-cyan-brand cursor-pointer transition-colors">About</a></li>
+          <li><a (click)="scrollTo('contact')" class="text-text-muted hover:text-cyan-brand cursor-pointer transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Footer Right: Affiliation -->
+      <div class="md:col-span-4 md:ml-auto">
+        <h4 class="text-white font-sora font-bold mb-6">Global Presence</h4>
+        <div class="space-y-4">
+           <div class="p-5 rounded-2xl bg-bg-primary/50 border border-white/5">
+              <p class="text-text-muted text-sm leading-relaxed font-inter">
+                Cyber Core Solution is a strategic business unit of the <span class="text-cyan-brand font-bold uppercase tracking-wider text-[10px]">CyCsol Group</span>, delivering excellence to clients in 5+ industries worldwide.
+              </p>
+           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Divider Line -->
+    <div class="mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+       <p class="text-text-muted text-[11px] font-inter tracking-wide uppercase">
+          A CyCsol Group Company · © 2025 Cyber Core Solution. All rights reserved.
+       </p>
+       <div class="flex gap-8 text-[11px] text-text-muted font-inter uppercase tracking-wide">
+          <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
+          <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+       </div>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,55 @@
+/* AiShowcase specific animations */
+:host {
+  display: block;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1.1);
+  }
+}
+
+.dash-flow {
+  stroke-dasharray: 8;
+  animation: dash-animation 20s linear infinite;
+}
+
+@keyframes dash-animation {
+  from {
+    stroke-dashoffset: 200;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.floating-node {
+  animation: float-animation 6s ease-in-out infinite;
+}
+
+@keyframes float-animation {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  50% {
+    transform: translateY(-10px) translateX(5px);
+  }
+}
+
+.full-width-banner {
+  margin-left: calc(-50vw + 50%);
+  margin-right: calc(-50vw + 50%);
+  width: 100vw;
+  position: relative;
+  /* left: 50%;
+  right: 50%; */
+}

@@ -1,0 +1,56 @@
+<section id="why-us" class="py-24 px-6 relative overflow-hidden" 
+         style="background: radial-gradient(circle at center, #0D1425 0%, #060B18 100%);">
+  <div class="max-w-7xl mx-auto">
+    
+    <!-- Header -->
+    <div class="text-center mb-20 animate-on-scroll">
+      <h2 class="text-4xl md:text-5xl font-sora font-bold text-white mb-6">
+        Built Different. <span class="gradient-text">Delivered Better.</span>
+      </h2>
+      <p class="text-text-muted text-lg max-w-2xl mx-auto font-inter">
+        We bridge the gap between technical complexity and business outcomes.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      
+      <!-- Left: Features -->
+      <div class="space-y-10">
+        <p class="text-xl md:text-2xl text-text-primary font-bold leading-relaxed mb-12 animate-on-scroll">
+          We don't just write code. We understand your business, architect the right solution, and deliver with precision — on time, every time.
+        </p>
+
+        <div class="space-y-8">
+           <div *ngFor="let feature of features; let i = index" 
+                class="flex gap-6 animate-on-scroll" 
+                [style.transition-delay]="(0.1 * i) + 's'">
+              <div class="w-10 h-10 shrink-0 bg-cyan-brand/10 border border-cyan-brand/20 rounded-full flex items-center justify-center text-cyan-brand">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              </div>
+              <div>
+                 <h4 class="text-lg font-sora font-bold text-text-primary mb-1">{{ feature.label }}</h4>
+                 <p class="text-text-muted font-inter text-sm">{{ feature.description }}</p>
+              </div>
+           </div>
+        </div>
+      </div>
+
+      <!-- Right: Stat Grid -->
+      <div class="grid grid-cols-2 gap-6">
+        <div *ngFor="let stat of stats; let i = index" 
+             class="group card-glow bg-bg-secondary/80 backdrop-blur-md rounded-[2rem] p-10 text-center animate-on-scroll"
+             [style.transition-delay]="(0.2 * i) + 's'">
+           <div class="count-up-stat mb-4 text-5xl font-sora font-bold text-cyan-brand group-hover:scale-110 transition-transform duration-500"
+                [attr.data-count]="stat.value"
+                [attr.data-suffix]="stat.suffix">
+             0
+           </div>
+           <div class="text-text-muted text-sm uppercase tracking-widest font-bold font-sora">
+             {{ stat.label }}
+           </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
