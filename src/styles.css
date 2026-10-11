@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -20,8 +21,6 @@
 }
 
 @layer base {
-  @import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500&display=swap');
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
   body { background-color: var(--color-bg-primary); color: var(--color-text-primary); font-family: var(--font-inter); overflow-x: hidden; }

@@ -73,7 +73,7 @@ export class ProjectsService {
     client: 'Confidential',
     industry: 'Retail',
 
-    images: ['/smartapp-360.png'],
+    images: ['smartapp-360.png'],
 
     overview: `A web-based business management solution with integrated POS, Inventory, and Accounts management modules. Designed for efficient retail operations.`,
     challenge: `Manual workflows and inefficient retail management.`,
@@ -119,7 +119,7 @@ export class ProjectsService {
     client: 'Confidential',
     industry: 'Enterprise',
 
-    images: ['/clery-edge.png'],
+    images: ['clery-edge.png'],
 
     overview: `Revamped legacy ASPX platform into Angular + ASP.NET Core system.`,
     challenge: `Outdated system with poor performance.`,
@@ -165,7 +165,7 @@ export class ProjectsService {
     client: 'Confidential',
     industry: 'Travel',
 
-    images: ['/discover-sair.png'],
+    images: ['discover-sair.png'],
 
     overview: `A full-stack travel booking system with admin, manager, and traveler roles.`,
     challenge: `Complex booking workflows and role management.`,
@@ -211,7 +211,7 @@ export class ProjectsService {
     client: 'Confidential',
     industry: 'Fitness',
 
-    images: ['/propiu-web-1.jpg'],
+    images: ['propiu-web-1.jpg'],
 
     overview: `Upgraded gym management system to Angular 19.`,
     challenge: `Legacy Angular version limitations.`,
@@ -256,7 +256,7 @@ export class ProjectsService {
     client: 'Confidential',
     industry: 'Technology',
 
-    images: ['/drone-leaf.jpg'],
+    images: ['drone-leaf.jpg'],
 
     overview: `Drone services platform with real-time dashboards.`,
     challenge: `Handling real-time updates.`,
@@ -301,7 +301,7 @@ export class ProjectsService {
     client: 'Confidential',
     industry: 'HealthTech',
 
-    images: ['/nic-mocup.png'],
+    images: ['nic-mocup.png'],
 
     overview: `AI app for skincare analysis using facial scans.`,
     challenge: `Accurate AI recommendations.`,
@@ -346,7 +346,7 @@ export class ProjectsService {
     client: 'Confidential',
     industry: 'Eductions',
 
-    images: ['/hand-hero-mocup.png'],
+    images: ['hand-hero-mocup.png'],
 
     overview: `3D gesture-based interactive mobile application.`,
     challenge: `Rendering performance.`,

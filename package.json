@@ -5,6 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:gh": "ng build --configuration production --base-href /",
+    "postbuild": "node -e \"const fs=require('fs');const p='dist/cyber-core-solution/browser';if(fs.existsSync(p+'/index.html')){fs.copyFileSync(p+'/index.html',p+'/404.html');console.log('Created 404.html for GitHub Pages SPA routing');}\"",
+    "deploy": "npm run build:gh && npx -y gh-pages -d dist/cyber-core-solution/browser",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
