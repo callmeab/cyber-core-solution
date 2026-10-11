@@ -2,8 +2,13 @@
   <div class="max-w-7xl mx-auto">
     <!-- Header -->
     <div class="text-center mb-16 animate-on-scroll">
-      <h2 class="text-4xl md:text-5xl font-sora font-bold text-white mb-6">Our Work</h2>
-      <p class="text-text-muted text-lg max-w-2xl mx-auto font-inter">Real projects. Real results.</p>
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-cyan-brand/10 border border-cyan-brand/30 text-cyan-brand font-mono text-xs uppercase tracking-widest mb-4">
+        <span>Ready-Made SaaS · Enterprise ERP · Bespoke Development</span>
+      </div>
+      <h2 class="text-4xl md:text-5xl font-sora font-bold text-white mb-6">Commercial Products & Flagship Systems</h2>
+      <p class="text-text-muted text-lg max-w-3xl mx-auto font-inter">
+        Explore our commercial SaaS products, enterprise ERP architectures, and custom-engineered platforms built for global scale.
+      </p>
     </div>
 
     <!-- Filter Tabs -->
@@ -24,7 +29,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
       <div 
         *ngFor="let project of filteredProjects(); let i = index"
-        class="group card-glow bg-bg-secondary rounded-[2.5rem] overflow-hidden flex flex-col animate-on-scroll"
+        class="group card-glow bg-bg-secondary rounded-[2.5rem] overflow-hidden flex flex-col animate-on-scroll border border-white/5 hover:border-cyan-brand/30 transition-all duration-500"
         [style.transition-delay]="(0.1 + (i * 0.1)) + 's'"
         (mouseenter)="toggleHover(project, true)"
         (mouseleave)="toggleHover(project, false)"
@@ -33,18 +38,20 @@
         <div class="h-64 bg-bg-primary/50 overflow-hidden relative border-b border-white/5">
           <div class="absolute inset-0 bg-gradient-brand opacity-10 group-hover:opacity-20 transition-opacity"></div>
           
+          <img *ngIf="project.image" [src]="project.image" [alt]="project.title" class="w-full h-full object-cover opacity-60 group-hover:scale-105 group-hover:opacity-80 transition-all duration-700">
+
           <!-- Hover Overlay -->
           <div 
-            class="absolute inset-0 bg-bg-primary/60 backdrop-blur-sm flex items-center justify-center transition-all duration-500 z-20"
+            class="absolute inset-0 bg-bg-primary/75 backdrop-blur-md flex items-center justify-center transition-all duration-500 z-20"
             [ngClass]="project.isHovered ? 'opacity-100' : 'opacity-0 pointer-events-none translate-y-4'"
           >
             <button [routerLink]="['/portfolio', project.id]" class="px-8 py-3 bg-white text-bg-primary font-sora font-bold rounded-xl hover:scale-105 transition-transform shadow-2xl">
-              View Case Study
+              Explore Product Architecture
             </button>
           </div>
           
           <!-- Branding Overlay/Image Placeholder -->
-          <div class="absolute inset-0 flex items-center justify-center pointer-events-none px-6 text-center">
+          <div *ngIf="!project.image" class="absolute inset-0 flex items-center justify-center pointer-events-none px-6 text-center">
              <span class="text-white/10 font-sora text-5xl font-black uppercase tracking-tighter">{{ project.title }}</span>
           </div>
 
@@ -59,15 +66,15 @@
         <!-- content Below -->
         <div class="p-10 flex flex-col flex-grow">
           <div class="mb-4 flex flex-wrap gap-2">
-             <span class="px-3 py-1 bg-cyan-brand/5 border border-cyan-brand/10 text-cyan-brand/70 rounded-full text-[9px] font-bold uppercase tracking-widest">
+             <span class="px-3 py-1 bg-cyan-brand/10 border border-cyan-brand/20 text-cyan-brand rounded-full text-[9px] font-bold uppercase tracking-widest">
                {{ project.category }}
              </span>
-             <span class="px-3 py-1 bg-violet-brand/5 border border-violet-brand/10 text-violet-brand/70 rounded-full text-[9px] font-bold uppercase tracking-widest">
+             <span class="px-3 py-1 bg-violet-brand/10 border border-violet-brand/20 text-violet-brand rounded-full text-[9px] font-bold uppercase tracking-widest">
                {{ project.role }}
              </span>
           </div>
 
-          <h3 class="text-2xl font-sora font-bold text-white mb-4">{{ project.title }}</h3>
+          <h3 class="text-2xl font-sora font-bold text-white mb-4 group-hover:text-cyan-brand transition-colors">{{ project.title }}</h3>
           <p class="text-text-muted font-inter text-sm leading-relaxed mb-8 line-clamp-3">{{ project.description }}</p>
 
           <!-- Tags -->
@@ -78,8 +85,8 @@
           </div>
 
           <div class="mt-auto">
-             <a class="text-cyan-brand font-sora font-semibold inline-flex items-center gap-2 group/link cursor-pointer text-sm">
-               View Project 
+             <a [routerLink]="['/portfolio', project.id]" class="text-cyan-brand font-sora font-semibold inline-flex items-center gap-2 group/link cursor-pointer text-sm">
+               Explore Product Details 
                <span class="transition-transform group-hover/link:translate-x-1">→</span>
              </a>
           </div>

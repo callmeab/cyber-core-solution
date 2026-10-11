@@ -28,7 +28,7 @@ export class PortfolioComponent implements AfterViewInit {
   private animationService = inject(AnimationService);
   private projectsService = inject(ProjectsService);
 
-  categories = ['All', 'Web Application', 'AI Solution'];
+  categories = ['All', 'SaaS Products', 'Marketplace & POS', 'Enterprise ERP', 'Web Development'];
 
   activeCategory = signal('All');
 
@@ -37,12 +37,13 @@ export class PortfolioComponent implements AfterViewInit {
     return {
       id: project.id,
       title: project.name,
-      description: project.tagline,
+      description: project.tagline || project.shortDescription || '',
       tags: [
+        ...(project.tags || []),
         ...project.techStack.frontend,
         ...project.techStack.backend
       ].slice(0, 5), // limit tags for UI
-      role: 'Angular Developer', // 💡 static or derive if needed
+      role: project.role || 'Commercial Product',
       date: project.year,
       category: project.category,
       image: project.images?.[0] || '',
