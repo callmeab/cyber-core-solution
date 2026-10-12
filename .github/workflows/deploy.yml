@@ -37,7 +37,6 @@ jobs:
       - name: Build project for GitHub Pages
         run: |
           npm run build:gh
-          cp dist/cyber-core-solution/browser/index.html dist/cyber-core-solution/browser/404.html
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v5

@@ -31,15 +31,6 @@ import { AnimationService } from '../../core/services/animation';
                 <circle cx="150" cy="300" r="8" fill="#7B5EA7" class="animate-pulse" style="animation-delay: 1.5s" />
                 <circle cx="250" cy="300" r="8" fill="#00D4FF" class="animate-pulse" style="animation-delay: 2s" />
               </svg>
-              
-              <!-- Floating Code Badge -->
-              <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 glass-panel p-6 rounded-2xl border-violet-brand/20 backdrop-blur-2xl">
-                 <pre class="font-mono text-[10px] text-violet-brand leading-none">
-                    <span class="text-white">AppliedIntelligence</span>.v2
-                    [Processing...]
-                    Status: <span class="text-mint-brand">Success</span>
-                 </pre>
-              </div>
            </div>
         </div>
 

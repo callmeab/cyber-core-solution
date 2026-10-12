@@ -265,7 +265,7 @@ export class ProjectsService {
 
     techStack: {
       frontend: ['Angular', 'Tailwind CSS', 'Material UI'],
-      backend: ['Dot Net', 'JavaScript'],
+      backend: ['.NET', 'JavaScript'],
       database: ['SQL'],
       devops: []
     },
@@ -516,7 +516,7 @@ export class ProjectsService {
     status: 'Completed',
     year: '2024',
     client: 'Confidential',
-    industry: 'Eductions',
+    industry: 'Education',
 
     images: ['hand-hero-mocup.png'],
 

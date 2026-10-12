@@ -1,12 +1,13 @@
 import { Component, inject, AfterViewInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { AnimationService } from '../../core/services/animation';
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.css'
 })
@@ -21,13 +22,16 @@ export class ContactComponent implements AfterViewInit {
     projectBrief: ['', [Validators.required, Validators.minLength(10)]]
   });
 
+  currentYear = new Date().getFullYear();
   isSubmitted = signal(false);
   showSuccess = signal(false);
 
   services = [
-    'Web & Mobile Dev',
+    'Web & Mobile Development',
+    'IT Consulting & Managed Services',
+    'UI/UX & Graphic Design',
+    'API & Integrations',
     'AI & Data Solutions',
-    'IT Consulting',
     'Other'
   ];
 

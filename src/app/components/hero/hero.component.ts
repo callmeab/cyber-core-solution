@@ -49,7 +49,7 @@ export class HeroComponent implements AfterViewInit, OnDestroy {
         this.charIndex++;
       }
 
-      let typeSpeed = this.isDeleting ? 50 : 150;
+      let typeSpeed = this.isDeleting ? 30 : 80;
 
       if (!this.isDeleting && this.charIndex === currentWord.length) {
         typeSpeed = 2000;

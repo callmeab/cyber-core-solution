@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { Project, ProjectsService } from '../../core/services/projects';
+import { SITE_URL, SeoService } from '../../core/services/seo';
 
 @Component({
   selector: 'app-project-detail',
@@ -31,7 +32,8 @@ export class ProjectDetailComponent implements OnInit, AfterViewInit, OnDestroy 
   constructor(
     private route: ActivatedRoute,
     public router: Router,
-    private projectsService: ProjectsService
+    private projectsService: ProjectsService,
+    private seo: SeoService
   ) {}
 
   ngOnInit(): void {
@@ -44,6 +46,21 @@ export class ProjectDetailComponent implements OnInit, AfterViewInit, OnDestroy 
       this.relatedProjects = this.projectsService.getAll()
         .filter(p => p.id !== id)
         .slice(0, 3);
+      this.seo.update({
+        title: `${found.name} Case Study | CodeByte`,
+        description: `${found.tagline}. ${found.shortDescription ?? ''} Built by CodeByte.`.replace(/\s+/g, ' ').trim(),
+        path: `/portfolio/${found.id}`,
+        image: `${SITE_URL}/${found.images[0]}`,
+        type: 'article',
+        jsonLd: {
+          '@context': 'https://schema.org',
+          '@type': 'BreadcrumbList',
+          itemListElement: [
+            { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE_URL}/` },
+            { '@type': 'ListItem', position: 2, name: found.name, item: `${SITE_URL}/portfolio/${found.id}` },
+          ],
+        },
+      });
       window.scrollTo(0, 0);
     });
   }

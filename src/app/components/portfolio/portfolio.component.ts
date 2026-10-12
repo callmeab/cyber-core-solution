@@ -32,18 +32,31 @@ export class PortfolioComponent implements AfterViewInit {
 
   activeCategory = signal('All');
 
+  // Case-insensitive de-dupe, and normalise "Dot Net" -> ".NET"
+  private uniqueTags(tags: string[]): string[] {
+    const seen = new Set<string>();
+    return tags
+      .map(t => (/^dot\s?net$/i.test(t) ? '.NET' : t))
+      .filter(t => {
+        const key = t.toLowerCase();
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+  }
+
   // ✅ Transform service data → UI model
   private mapToPortfolio(project: Project): PortfolioProject {
     return {
       id: project.id,
       title: project.name,
       description: project.tagline || project.shortDescription || '',
-      tags: [
+      tags: this.uniqueTags([
         ...(project.tags || []),
         ...project.techStack.frontend,
         ...project.techStack.backend
-      ].slice(0, 5), // limit tags for UI
-      role: project.role || 'Commercial Product',
+      ]).slice(0, 5), // limit tags for UI
+      role: project.industry || 'Commercial Product',
       date: project.year,
       category: project.category,
       image: project.images?.[0] || '',
