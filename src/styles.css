@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700&family=Inter:wght@400;500&family=Bricolage+Grotesque:wght@300;400;700;800&family=Manrope:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -18,6 +18,21 @@
   --color-border-glow: rgba(0,212,255,0.5);
 
   --background-image-gradient-brand: linear-gradient(90deg, #00D4FF, #7B5EA7);
+
+  /* Light "Eventio-style" system used by the home page */
+  --font-display: 'Bricolage Grotesque', sans-serif;
+  --font-body: 'Manrope', sans-serif;
+  --color-ink: #0A0F1F;
+  --color-navy: #0A1140;
+  --color-navy-soft: #121A57;
+  --color-paper: #F4F5F7;
+  --color-slate-soft: #5B6272;
+  --color-line: #E6E8EE;
+  --color-accent-blue: #3B82F6;
+  --color-accent-amber: #F59E0B;
+  --color-accent-violet: #8B5CF6;
+  --color-accent-rose: #F43F5E;
+  --color-accent-green: #10B981;
 }
 
 @layer base {
@@ -76,6 +91,60 @@
   .btn-primary { @apply bg-gradient-brand text-white shadow-[0_0_20px_rgba(0,212,255,0.3)] hover:shadow-[0_0_40px_rgba(0,212,255,0.5)] hover:-translate-y-1; }
   .btn-secondary { @apply border border-white/10 text-white hover:bg-white/5; }
   .btn-ghost { @apply text-text-muted hover:text-white hover:bg-white/5; }
+
+  /* Light theme building blocks */
+  .light-page { font-family: var(--font-body); color: var(--color-ink); }
+  .h-display {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1.02;
+    color: var(--color-ink);
+  }
+  /* The lighter second half of every headline: "Planning, <span class='h-light'>perfected.</span>" */
+  .h-light { font-weight: 300; color: #3A4468; letter-spacing: -0.045em; }
+  .on-navy .h-display { color: #fff; }
+  .on-navy .h-light { color: #9AA3C7; }
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em];
+    color: var(--color-slate-soft);
+  }
+  .eyebrow-dot { width: 8px; height: 8px; border-radius: 9999px; display: inline-block; }
+  .btn-navy {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3.5 text-sm font-bold text-white transition-all duration-200 cursor-pointer;
+    background: var(--color-navy);
+  }
+  .btn-navy:hover { background: var(--color-navy-soft); transform: translateY(-1px); box-shadow: 0 10px 24px -8px rgba(10,17,64,.5); }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-6 py-3.5 text-sm font-bold transition-all duration-200 cursor-pointer;
+    border: 1px solid var(--color-line); color: var(--color-ink); background: #fff;
+  }
+  .btn-outline:hover { border-color: var(--color-ink); }
+  .link-arrow { @apply inline-flex items-center gap-1.5 text-sm font-bold cursor-pointer; color: var(--color-ink); }
+  .link-arrow span { transition: transform .2s; }
+  .link-arrow:hover span { transform: translateX(4px); }
+  .mock-card {
+    background: #fff;
+    border: 1px solid var(--color-line);
+    border-radius: 16px;
+    box-shadow: 0 24px 60px -24px rgba(10,17,64,.28), 0 2px 6px rgba(10,17,64,.04);
+  }
+  .hero-wash {
+    background:
+      radial-gradient(40% 50% at 85% 30%, rgba(196,170,255,.35), transparent 70%),
+      radial-gradient(35% 45% at 70% 85%, rgba(255,190,140,.35), transparent 70%),
+      radial-gradient(30% 40% at 95% 70%, rgba(150,170,255,.30), transparent 70%),
+      #fff;
+  }
+  .grid-navy {
+    background-color: var(--color-navy);
+    background-image:
+      linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .float-slow { animation: floaty 6s ease-in-out infinite; }
+  .float-slower { animation: floaty 8s ease-in-out infinite reverse; }
   .badge-base { @apply px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase border inline-flex items-center gap-2; }
   .badge-cyan { @apply bg-cyan-brand/5 text-cyan-brand border-cyan-brand/20; }
   .badge-violet { @apply bg-violet-brand/5 text-violet-brand border-violet-brand/20; }
@@ -83,6 +152,11 @@
 
 @keyframes fadeUp {
   to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
 @keyframes shimmer {

@@ -1,61 +1,105 @@
-<section class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-bg-primary">
-  <!-- Particle Canvas Background -->
-  <canvas #particleCanvas class="absolute inset-0 z-0"></canvas>
+<section id="hero" class="light-page hero-wash relative overflow-hidden pt-32 pb-24 px-6">
+  <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-  <!-- Hero Content -->
-  <div class="relative z-10 w-full max-w-7xl mx-auto px-6 text-center">
-    
-    <!-- Overline -->
-    <p class="animate-fade-up text-cyan-brand text-sm tracking-[0.4em] uppercase font-sora font-semibold mb-6" 
-       style="animation-delay: 0.2s">
-      Backed by CyCsol Group of Industries
-    </p>
+    <!-- Copy -->
+    <div>
+      <div class="animate-fade-up inline-flex items-center gap-2 rounded-full border border-line bg-white px-3.5 py-1.5 text-xs font-semibold text-ink mb-8" style="animation-delay: 0.1s">
+        <span class="eyebrow-dot bg-accent-amber"></span>
+        Backed by CyCsol Group of Industries
+      </div>
 
-    <!-- Headline -->
-    <h1 class="animate-fade-up text-5xl md:text-7xl lg:text-[68px] font-sora font-bold leading-tight text-white mb-8"
-        style="animation-delay: 0.4s">
-      We Engineer the <br/>
-      <span class="shimmer-text">Digital Future</span>
-    </h1>
+      <h1 class="animate-fade-up h-display text-6xl md:text-7xl lg:text-[84px]" style="animation-delay: 0.2s">
+        Every idea.<br/>
+        Every platform.<br/>
+        <span class="h-light">One team.</span>
+      </h1>
 
-    <!-- Typewriter -->
-    <div class="animate-fade-up h-12 mb-10 flex items-center justify-center"
-         style="animation-delay: 0.6s">
-      <span class="text-xl md:text-2xl text-cyan-brand font-mono border-r-2 border-cyan-brand pr-2">
-        {{ typewriterText() }}
-      </span>
+      <p class="animate-fade-up text-lg md:text-xl text-slate-soft max-w-xl mt-8 leading-relaxed" style="animation-delay: 0.35s">
+        End-to-end software house for web, mobile and AI. From your first MVP to your fiftieth enterprise rollout, we engineer it all in one place.
+      </p>
+
+      <!-- Typewriter -->
+      <p class="animate-fade-up mt-5 h-7 text-base font-semibold text-ink" style="animation-delay: 0.45s">
+        <span class="text-slate-soft font-medium">We build </span>
+        <span class="border-r-2 border-ink pr-1">{{ typewriterText() }}</span>
+      </p>
+
+      <!-- CTA -->
+      <div class="animate-fade-up mt-10 flex flex-col sm:flex-row gap-3 max-w-lg" style="animation-delay: 0.55s">
+        <button (click)="scrollTo('contact')" class="btn-navy !py-4 !px-8">Start a project</button>
+        <button (click)="scrollTo('portfolio')" class="btn-outline !py-4 !px-8">See our work</button>
+      </div>
+
+      <ul class="animate-fade-up mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-soft" style="animation-delay: 0.65s">
+        <li class="flex items-center gap-2"><span class="text-accent-green font-bold">✓</span> Free consultation</li>
+        <li class="flex items-center gap-2"><span class="text-accent-green font-bold">✓</span> 40+ projects delivered</li>
+        <li class="flex items-center gap-2"><span class="text-accent-green font-bold">✓</span> AI &amp; Cloud ready</li>
+      </ul>
     </div>
 
-    <!-- Descriptor -->
-    <p class="animate-fade-up text-text-muted text-lg md:text-xl max-w-2xl mx-auto mb-12 font-inter"
-       style="animation-delay: 0.8s">
-      End-to-end digital solutions for businesses ready to lead.
-    </p>
+    <!-- Dashboard mockup -->
+    <div class="relative animate-fade-up" style="animation-delay: 0.4s">
+      <!-- Floating AI card -->
+      <div class="float-slow absolute -top-8 right-0 lg:-right-4 z-20 w-64 rounded-2xl bg-navy text-white p-4 shadow-2xl rotate-2">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="w-6 h-6 rounded-md bg-gradient-to-br from-accent-amber to-accent-rose inline-block"></span>
+          <span class="text-xs font-bold">AI Assistant</span>
+        </div>
+        <p class="text-xs leading-relaxed text-white/80">
+          Found <b class="text-accent-amber">3 slow queries</b> and a
+          <b class="text-accent-green">38% faster build</b> in your CI pipeline.
+        </p>
+      </div>
 
-    <!-- Buttons -->
-    <div class="animate-fade-up flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
-         style="animation-delay: 1.0s">
-      <button class="w-full sm:w-auto px-10 py-5 bg-cyan-brand text-bg-primary font-sora font-bold rounded-xl shadow-glow-cyan hover:scale-[1.02] transition-all duration-300">
-        Start a Project
-      </button>
-      <button class="w-full sm:w-auto px-10 py-5 border border-cyan-brand text-cyan-brand font-sora font-bold rounded-xl hover:bg-cyan-brand/5 transition-all duration-300">
-        See Our Work
-      </button>
+      <!-- Main window -->
+      <div class="mock-card overflow-hidden lg:-rotate-2 origin-bottom-right">
+        <div class="flex items-center gap-1.5 px-4 py-3 bg-paper border-b border-line">
+          <span class="w-2.5 h-2.5 rounded-full bg-[#FF5F57]"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-[#FEBC2E]"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-[#28C840]"></span>
+          <span class="ml-3 text-[11px] text-slate-soft">app.codebyte.tech/projects</span>
+        </div>
+
+        <div class="flex">
+          <aside class="hidden sm:flex w-36 shrink-0 flex-col gap-1 bg-navy p-3 text-xs text-white/70">
+            <span class="font-[family-name:var(--font-display)] font-extrabold text-white text-base mb-4 px-2">CodeByte</span>
+            <span class="px-2 py-2 rounded-md bg-white/10 text-white border-l-2 border-accent-blue">Projects</span>
+            <span class="px-2 py-2">Sprints</span>
+            <span class="px-2 py-2">Deployments</span>
+            <span class="px-2 py-2">Team</span>
+            <span class="px-2 py-2">Reports</span>
+          </aside>
+
+          <div class="flex-1 p-5 min-w-0">
+            <p class="text-[10px] font-bold tracking-widest text-accent-blue uppercase">Project pipeline</p>
+            <p class="font-[family-name:var(--font-display)] font-extrabold text-xl text-ink mb-4">Good morning, team</p>
+
+            <div class="grid grid-cols-3 gap-2 mb-4">
+              <div class="rounded-lg border border-line p-2.5"><p class="text-[9px] uppercase text-slate-soft">Active</p><p class="font-extrabold text-lg">12</p></div>
+              <div class="rounded-lg border border-line p-2.5"><p class="text-[9px] uppercase text-slate-soft">In review</p><p class="font-extrabold text-lg">5</p></div>
+              <div class="rounded-lg border border-line p-2.5"><p class="text-[9px] uppercase text-slate-soft">On time</p><p class="font-extrabold text-lg">96%</p></div>
+            </div>
+
+            <!-- Timeline -->
+            <div class="rounded-lg border border-line p-3 space-y-2.5">
+              <div class="flex items-center gap-2 text-[11px]"><span class="w-20 text-ink font-semibold shrink-0">Web portal</span><div class="h-5 flex-1 rounded bg-blue-100 relative"><div class="absolute inset-y-0 left-0 w-3/4 rounded bg-accent-blue/70 text-[9px] text-white px-2 flex items-center">Build</div></div></div>
+              <div class="flex items-center gap-2 text-[11px]"><span class="w-20 text-ink font-semibold shrink-0">Mobile app</span><div class="h-5 flex-1 rounded bg-amber-100 relative"><div class="absolute inset-y-0 left-1/4 w-2/3 rounded bg-accent-amber/70 text-[9px] text-white px-2 flex items-center">Design</div></div></div>
+              <div class="flex items-center gap-2 text-[11px]"><span class="w-20 text-ink font-semibold shrink-0">AI module</span><div class="h-5 flex-1 rounded bg-violet-100 relative"><div class="absolute inset-y-0 left-1/3 w-1/2 rounded bg-accent-violet/70 text-[9px] text-white px-2 flex items-center">Training</div></div></div>
+              <div class="flex items-center gap-2 text-[11px]"><span class="w-20 text-ink font-semibold shrink-0">ERP rollout</span><div class="h-5 flex-1 rounded bg-rose-100 relative"><div class="absolute inset-y-0 left-0 w-1/3 rounded bg-accent-rose/70 text-[9px] text-white px-2 flex items-center">QA</div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Floating deploy card -->
+      <div class="float-slower mock-card absolute -bottom-10 -left-4 lg:-left-10 z-20 w-60 p-4 -rotate-2">
+        <p class="text-[10px] font-bold tracking-widest uppercase text-accent-amber">Deployment</p>
+        <p class="font-[family-name:var(--font-display)] font-extrabold text-xl text-ink">v2.4.0 live</p>
+        <div class="mt-2 h-1.5 rounded-full bg-paper overflow-hidden">
+          <div class="h-full w-full rounded-full bg-gradient-to-r from-accent-amber via-accent-blue to-accent-rose"></div>
+        </div>
+        <p class="mt-1.5 text-[11px] font-semibold text-accent-green">Zero downtime · all checks passed</p>
+      </div>
     </div>
-
-    <!-- Trust Pills -->
-    <div class="animate-fade-up flex flex-wrap justify-center gap-4"
-         style="animation-delay: 1.2s">
-      <div class="border border-border-default bg-white/5 rounded-full px-5 py-2 text-sm text-text-muted font-inter backdrop-blur-sm">
-        40+ Projects Delivered
-      </div>
-      <div class="border border-border-default bg-white/5 rounded-full px-5 py-2 text-sm text-text-muted font-inter backdrop-blur-sm">
-        AI & Cloud Ready
-      </div>
-      <div class="border border-border-default bg-white/5 rounded-full px-5 py-2 text-sm text-text-muted font-inter backdrop-blur-sm">
-        CyCsol Affiliated
-      </div>
-    </div>
-
   </div>
 </section>
